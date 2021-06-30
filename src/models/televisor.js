@@ -3,8 +3,8 @@ const Schema=mongoose.Schema;
 
 const esquemaTelevsor=new Schema({
     
-        name:String,required=true,
-        precio:Number,required=true,
+        nombre:String,//required=true,
+        precio:Number,//required=true,
         tags:[String,String,String],
         cantidad:Number
         
