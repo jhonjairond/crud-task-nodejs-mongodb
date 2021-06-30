@@ -1,0 +1,78 @@
+<%- include('partials/_header') %>
+
+   <div class="container">
+       <div class="row">
+           <!--Form-->
+           <div class="col-md-5">
+               <div class="card">
+                   <div class="card-body">
+                       
+                    <form action="/add" method="POST">  <!--mediante metodo post llamo mi archivo add-->
+                            
+                            <div class="form-group">
+                            <input type="text" name="nombre" placeholder="nombre" class="form-control mb-2">
+                            </div>
+
+                            <div class="form-group">
+                            <input type="number" name="precio" placeholder="precio" class="form-control mb-2">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" name="tags" placeholder="tags" class="form-control mb-2">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="number" name="cantidad" placeholder="número" class="form-control mb-2">
+                            </div>
+
+                           <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary ">Añadir a inventario</button>
+                           </div>
+
+                       </form>
+                   </div>
+               </div>
+           </div>
+           <!--list-->
+            
+
+           <div class="col-md-7">
+               <table class="table table-bordered table-hover">
+                   <thead>
+                       <tr>
+                           <th>N°</th>
+                           <th>Nombre</th>
+                           <th>Precio</th>
+                           <th>Tags</th>
+                           <th>Cantidad</th>
+                           <th>Operacion</th>
+                       </tr>
+                   </thead>
+
+                   <tbody><!--recorro tasks e imprimo-->
+                        <% for(var i=0; i<televisores.length; i++) {%> 
+                        <tr>
+                            <td><%= i+1 %> </td>
+                            <td><%= televisores[i].nombre %> </td>
+                            <td><%= televisores[i].precio %> </td>
+                            <td><%= televisores[i].tags %> </td>
+                            <td><%= televisores[i].cantidad %> </td>
+                            <td> 
+                                <a href="/delete/<%= televisores[i]._id %>" class="btn btn-danger">Borrar</a> 
+                                <a href="edit/<%= televisores[i]._id %>" class="btn btn-info">Editar</a>
+                            </td>
+                        </tr>
+                       <% } %>  
+
+                   </tbody>
+               </table>
+           </div>
+           <div>
+            <a href="/" class="btn btn-info">Home</a>
+            </div>
+
+       </div>
+   </div>
+
+<%- include('partials/_footer') %>
+

@@ -7,16 +7,26 @@
         <div class="col-md-5 offset-md-3">
             <div class="card">
                 <div class="card-body">
-                    <form action="/edit/<%= task._id  %> " method="POST">  <!--mediante metodo post llamo mi archivo add-->
+                    <form action="/edit/<%= televisor._id  %> " method="POST">  <!--mediante metodo post llamo mi archivo add-->
+
                         <div class="form-group">
-                            <input type="text" name="title" placeholder="insert a title" class="form-control mb-2" value="<%= task.title %> ">
-                        </div>
-                        <div class="form-group">
-                            <textarea name="description" id="" cols="80" class="form-control mb-2" placeholder="insert a description"><%= task.description %>                     
-                            </textarea>
-                        </div>
+                            <input type="text" name="nombre" placeholder="nombre" class="form-control mb-2" value=<%=televisor.nombre %>>
+                            </div>
+
+                            <div class="form-group">
+                            <input type="number" name="precio" placeholder="precio" class="form-control mb-2" value=<%=televisor.precio %>>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" name="tags" placeholder="tags" class="form-control mb-2" value=<%=televisor.tags %>>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="number" name="cantidad" placeholder="número" class="form-control mb-2" value=<%=televisor.cantidad %>>
+                            </div>
+
                         <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary ">Update</button>
+                        <button type="submit" class="btn btn-primary ">actualizar</button>
                         </div>
                     </form>
                 </div>
