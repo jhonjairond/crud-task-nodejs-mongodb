@@ -27,8 +27,8 @@ router.get('/usuario',async(req,res)=>{
 });
 
 router.post('/compra',async(req,res)=>{ 
-    //const resultado= req.body.nombre;
-    televisores=await Televisor.find({$text: {$search: 'computador'}})
+    const resultado= req.body.buscar;
+    televisores=await Televisor.find({$text: {$search: resultado}})
     res.render('compra',{
        televisores   //task:task
     });                       
