@@ -1,7 +1,7 @@
 const mongoose  = require("mongoose");
 const Schema=mongoose.Schema;    
 
-const esquemaTelevsor=new Schema({
+const esquemaTelevisor=new Schema({
     
         nombre:String,//required=true,
         precio:Number,//required=true,
@@ -10,4 +10,6 @@ const esquemaTelevsor=new Schema({
         
 });
 
-module.exports=mongoose.model('televisor',esquemaTelevsor);
+esquemaTelevisor.index({ nombre : 'text', precio : 'text', tags : 'text', cantidad : 'text' }) //indexo para poder buscar por texto
+
+module.exports=mongoose.model('televisor',esquemaTelevisor);

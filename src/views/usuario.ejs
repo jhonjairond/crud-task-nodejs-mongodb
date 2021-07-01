@@ -7,29 +7,25 @@
                <div class="card">
                    <div class="card-body">
                        
-                    <form action="/add" method="POST">  <!--mediante metodo post llamo mi archivo add-->
+                    <form action="/compra" method="POST">  <!--mediante metodo post llamo mi archivo add-->
                             
                             <div class="form-group">
-                            <input type="text" name="nombre" placeholder="nombre" class="form-control mb-2">
-                            </div>
-
-                            <div class="form-group">
-                            <input type="number" name="precio" placeholder="precio" class="form-control mb-2">
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" name="tags" placeholder="tags" class="form-control mb-2">
-                            </div>
-
-                            <div class="form-group">
-                                <input type="number" name="cantidad" placeholder="número" class="form-control mb-2">
+                            <input id="este" type="text" name="buscar" placeholder="Busqueda" class="form-control mb-2 d-grid gap-2">
                             </div>
 
                            <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary ">Añadir a inventario</button>
+                            <button  tupe="submit" class="btn btn-primary " onclick="obtener()">Buscar</button>
                            </div>
+                           <p id="valueInput"></p> 
+<script>
+const obtener=()=>{
+    let $el=document.querySelector("#este").value; 
+   
+    document.querySelector("#valueInput").innerHTML =$el;
+}    
+</script>
 
-                       </form>
+                    </form>
                    </div>
                </div>
            </div>
@@ -45,7 +41,7 @@
                            <th>Precio</th>
                            <th>Tags</th>
                            <th>Cantidad</th>
-                           <th>Operacion</th>
+                           
                        </tr>
                    </thead>
 
@@ -57,10 +53,7 @@
                             <td><%= televisores[i].precio %> </td>
                             <td><%= televisores[i].tags %> </td>
                             <td><%= televisores[i].cantidad %> </td>
-                            <td> 
-                                <a href="/delete/<%= televisores[i]._id %>" class="btn btn-danger">Borrar</a> 
-                                <a href="edit/<%= televisores[i]._id %>" class="btn btn-info">Editar</a>
-                            </td>
+                           
                         </tr>
                        <% } %>  
 
@@ -76,5 +69,4 @@
    </div>
 
 <%- include('partials/_footer') %>
-
 
