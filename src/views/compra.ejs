@@ -1,37 +1,40 @@
 <%- include('partials/_header') %>
 
-<div class="col-md-7">
-  <table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>N°</th>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Tags</th>
-            <th>Cantidad</th>
-            <th>comprar</th>
-        </tr>
-    </thead>
+<div class="container ms-4">
+  <div class="col-md-7">
+    <table class="table table-bordered table-hover">
+      <thead>
+          <tr>
+              <th>N°</th>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Tags</th>
+              <th>Cantidad</th>
+              <th>comprar</th>
+          </tr>
+      </thead>
 
-    <tbody><!--recorro tasks e imprimo-->
-      <% for(var i=0; i<televisores.length; i++) {%> 
-        <tr>
-            <td><%= i+1 %> </td>
-            <td><%= televisores[i].nombre %> </td>
-            <td><%= televisores[i].precio %> </td>
-            <td><%= televisores[i].tags %> </td>
-            <td><%= televisores[i].cantidad %> </td>
-            <td> 
-                <a href="edit/<%= televisores[i]._id %>" class="btn btn-danger">comprar</a>
-            </td>
-        </tr>
-      <% } %>  
-    </tbody> 
-  </table>  
-</div>
+      <tbody><!--recorro tasks e imprimo-->
+        <% for(var i=0; i<televisores.length; i++) {%> 
+          <tr>
+              <td><%= i+1 %> </td>
+              <td><%= televisores[i].nombre %> </td>
+              <td><%= televisores[i].precio %> </td>
+              <td><%= televisores[i].tags %> </td>
+              <td><%= televisores[i].cantidad %> </td>
+              <td> 
+                  <a name="comprar1" href="comprado/<%= televisores[i]._id %>/<%= televisores[i].cantidad %>" class="btn btn-danger">comprar</a>
+              </td>
+          </tr>
+        <% } %>  
+      </tbody> 
+    </table>  
+  </div>
 
-<div>
-  <a href="/" class="btn btn-info">Home</a>
+  <div>
+    <a href="/" class="btn btn-info">Home</a>
+  </div>
 </div>
 
 <%- include('partials/_footer') %>
+

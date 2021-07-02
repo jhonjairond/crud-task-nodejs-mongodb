@@ -34,11 +34,15 @@ router.post('/compra',async(req,res)=>{
     });                       
 });
 
-router.post('/comprado/:id', async(req,res)=>{   //ACTUALIZAR
-    const{id}=req.params;
-    await Televisor.updateOne({_id:id},req.body);
-    res.redirect('/usuario'); 
-});
+router.get('/comprado/:id/:cantidad',async (req,res)=>{  //cuando el navegador me pida id es una variable o indice de mi elemento lo mismo cantidad, los uso para extraer una variable
+    const{id}=req.params;                
+    const{cantidad}=req.params;    
+    if (cantidad>0){                         //extraigo la variable de los req.params de mi url
+        await Televisor.findOneAndUpdate({_id:id},{$set:{cantidad:cantidad-1}});
+    }
+    console.log( cantidad,id);
+    res.redirect('/usuario');
+ }); 
 
 router.post('/add',async (req,res)=>{                      
     const televisor=new Televisor(req.body);              
@@ -61,9 +65,7 @@ router.post('/edit/:id', async(req,res)=>{   //ACTUALIZAR
 });
 
 router.get('/delete/:id',async (req,res)=>{  //cuando el navegador me pida id es una variable o indice de mi elemento
-   
    const{id}=req.params;                    //id que viene de objeto req.params
-   
     await Televisor.remove({_id:id});                 //de mi modelo task remuevo _id con el id de req.params
     res.redirect('/inventario');
 
